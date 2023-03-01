@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator
+from webapp.models import Car
 
 def index(request):
     return render(request, 'webapp/index.html')
@@ -17,4 +19,9 @@ def contact(request):
 
 
 def cars(request):
+    cars = Car.objects.all()
+    paginator = Paginator(cars, 4)
+    page_number = request.GET.get('page')
+
+    context = {'cars': cars}
     return render(request, 'webapp/cars.html')

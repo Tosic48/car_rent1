@@ -16,7 +16,7 @@ class Car(models.Model):
         MaxValueValidator(5),
     ])
     price = models.PositiveIntegerField()
-    photo = models.IntegerField(upload_to='car_photos/', blank=True)
+    photo = models.IntegerField()#upload_to='car_photos/', blank=True)
 
     def __str__(self):
         return self.title
